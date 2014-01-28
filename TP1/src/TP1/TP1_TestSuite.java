@@ -7,7 +7,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith( Suite.class )
-@SuiteClasses( { TestSuite1.class } )
+@SuiteClasses( { TestSuite1.class, TestSuite2.class, TestSuite3.class } )
 public class TP1_TestSuite 
 {
 	@BeforeClass
