@@ -7,8 +7,8 @@ public abstract class CommandeFichier implements Commande {
 	
 	
 	protected TypeFichier typeFichier; 
-	private Invocateur invocateur;
-	private File fichier;
+	protected Invocateur invocateur;
+	protected File fichier;
 
 
 	

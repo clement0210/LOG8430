@@ -10,6 +10,8 @@ public class CommandeVide1 extends CommandeFichier {
 	}
 
 	public void executer() {
+        String fichier=invocateur.getNomFichier();
+        System.out.println(fichier);
 		System.out.println("Comamnde Vide 1");
 		File[] files=getFichier().listFiles();
 		for(File file:files){
