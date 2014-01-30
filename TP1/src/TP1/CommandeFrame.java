@@ -74,12 +74,9 @@ public class CommandeFrame extends JFrame implements ActionListener{
 			resultatCommande3.setText(resultat);
 		}
 		else if(action.equals("select")){
-			System.out.println("select1");
 			String resultat=commandeManager.executerSelect();
-			System.out.println("select2");
 			afficherContenu.setText(resultat);
 		}
-		
 	}
 	
 	public CommandeManager getCommandeManager() {

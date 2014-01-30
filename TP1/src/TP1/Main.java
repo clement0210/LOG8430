@@ -1,8 +1,6 @@
 package TP1;
 
-import static org.junit.Assert.assertArrayEquals;
 import org.junit.Test;
-import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
@@ -16,8 +14,6 @@ public class Main {
 
 		CommandeManager cmdManager=new CommandeManager();
 		cmdManager.manage();
-		
-//		new CommandeFrame().show();
 	}
 
 }
