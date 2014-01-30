@@ -17,11 +17,19 @@ public class CommandeFrame extends JFrame implements ActionListener{
 	private JButton select,commande1,commande2,commande3;
 	private JLabel resultatCommande1,resultatCommande2,resultatCommande3, afficherContenu;
 	
-	public CommandeFrame(){
+	public CommandeFrame(CommandeManager commandeManager){
 		select=new JButton("Select a file or folder");
+		select.setActionCommand("select");
+		select.addActionListener(this);
 		commande1=new JButton("Commande 1");
+		commande1.setActionCommand("cmd1");
+		commande1.addActionListener(this);
 		commande2=new JButton("Commande 2");
+		commande2.setActionCommand("cmd2");
+		commande2.addActionListener(this);
 		commande3=new JButton("Commande 3");
+		commande3.setActionCommand("cmd3");
+		commande3.addActionListener(this);
 		resultatCommande1=new JLabel("Results of command 1");
 		resultatCommande2=new JLabel("Results of command 2");
 		resultatCommande3=new JLabel("Results of command 3");
@@ -46,25 +54,29 @@ public class CommandeFrame extends JFrame implements ActionListener{
 		mainPanel.add(gridPanel);
 		this.setSize(700, 700);
 		this.add(mainPanel);
+		this.commandeManager = commandeManager;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		System.out.println("avant select");
 		String action=e.getActionCommand();
-		if(e.equals("Commande 1")){
+		if(action.equals("cmd1")){
 			String resultat=commandeManager.executerCommande1();
 			resultatCommande1.setText(resultat);
 		}
-		else if(e.equals("Commande 2")){
+		else if(action.equals("cmd2")){
 			String resultat=commandeManager.executerCommande2();
 			resultatCommande2.setText(resultat);
 		}
-		else if(e.equals("Commande 3")){
+		else if(action.equals("cmd3")){
 			String resultat=commandeManager.executerCommande3();
 			resultatCommande3.setText(resultat);
 		}
-		else if(e.equals("Select a file or folder")){
+		else if(action.equals("select")){
+			System.out.println("select1");
 			String resultat=commandeManager.executerSelect();
+			System.out.println("select2");
 			afficherContenu.setText(resultat);
 		}
 		

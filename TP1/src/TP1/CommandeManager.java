@@ -4,17 +4,28 @@ import java.io.File;
 
 public class CommandeManager {
 	
+	private Invocateur invocateur;
+	private File fichier;
+	
+	public CommandeManager(){
+		invocateur = new Invocateur();
+		fichier = new File(".");
+	}
+	
 	public void manage(){
-		Invocateur invocateur = new Invocateur();
-		//CommandeVide1 cmd1=new CommandeVide1(invocateur,new File("/home/clement0210/Documents/LOG8430/LOG8430/resources"));
-		CommandeVide1 cmd1 = new CommandeVide1( invocateur, new File( "C:\\workspace" ) );
-
 		
-		cmd1.executer();
+		//CommandeVide1 cmd1=new CommandeVide1(invocateur,new File("/home/clement0210/Documents/LOG8430/LOG8430/resources"));
+		CommandeFrame commandeFrame = new CommandeFrame(this);
+		
+		
+		commandeFrame.display();
+//		cmd1.executer();
 	}
 	
 	public String executerCommande1(){
-		return "";
+		CommandeVide1 commandeVide1 = new CommandeVide1( invocateur,fichier);
+		commandeVide1.executer();
+		return "Commande 1 sur"+fichier.getName();
 	}
 
 	public String executerCommande2(){
@@ -24,6 +35,9 @@ public class CommandeManager {
 		return "";
 	}
 	public String executerSelect(){
-		return "";
+		CommandeSelecte commandeSelecte = new CommandeSelecte(invocateur);
+		commandeSelecte.executer();
+		fichier=commandeSelecte.getFichier();
+		return commandeSelecte.getFichier().getName();
 	}
 }
