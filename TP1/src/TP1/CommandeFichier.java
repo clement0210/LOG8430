@@ -40,8 +40,19 @@ public abstract class CommandeFichier implements Commande {
 		this.typeFichier = typeFichier;
 	}
 
+    protected boolean isExecutable(){
+        if(fichier==null){
+            return false;
+        }
+        if( (typeFichier==TypeFichier.DOSSIER || typeFichier==TypeFichier.FICHIERETDOSSIER) && fichier.isDirectory()){
+            return true;
+        }
+        else if( (typeFichier==TypeFichier.FICHIER || typeFichier==TypeFichier.FICHIERETDOSSIER) && !fichier.isDirectory()){
+            return true;
+        }
+        return false;
+    }
 
-
-	public abstract void executer();
+	public abstract void executer() throws CommandeException;
 
 }

@@ -2,6 +2,6 @@ package TP1;
 
 public interface Commande {
 
-	public void executer();
+	public void executer() throws CommandeException;
 
 }

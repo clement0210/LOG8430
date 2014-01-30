@@ -21,26 +21,50 @@ public class CommandeManager {
 	
 	public String executerCommande1() {
 		CommandeVide1 commandeVide1 = new CommandeVide1(invocateur, fichier);
-		commandeVide1.executer();
-		return "Commande 1 sur " + fichier.getName();
+        try {
+            commandeVide1.executer();
+            return "Commande 1 sur " + fichier.getName();
+        } catch (CommandeException e) {
+            e.printStackTrace();
+            return "Impossible d'appliquer la commande (voir le log)";
+        }
+
 	}
 
 	public String executerCommande2(){
 		CommandeVide2 commandeVide2 = new CommandeVide2(invocateur, fichier);
-		commandeVide2.executer();
-		return "Commande 2 sur " + fichier.getName();
+        try {
+            commandeVide2.executer();
+            return "Commande 2 sur " + fichier.getName();
+        } catch (CommandeException e) {
+            e.printStackTrace();
+            return "Impossible d'appliquer la commande (voir le log)";
+        }
+
 	}
 	
 	public String executerCommande3(){
 		CommandeVide3 commandeVide3 = new CommandeVide3(invocateur, fichier);
-		commandeVide3.executer();
-		return "Commande 3 sur " + fichier.getName();
+        try {
+            commandeVide3.executer();
+            return "Commande 3 sur " + fichier.getName();
+        } catch (CommandeException e) {
+            e.printStackTrace();
+            return "Impossible d'appliquer la commande (voir le log)";
+        }
+
 	}
 	
 	public String executerSelect(){
 		CommandeSelecte commandeSelecte = new CommandeSelecte(invocateur);
 		commandeSelecte.executer();
 		fichier = commandeSelecte.getFichier();
-		return commandeSelecte.getFichier().getName();
+        StringBuilder str=new StringBuilder();
+        str.append("<html>"+fichier.getName()+"<br/>");
+        for(File file : commandeSelecte.getContenu()){
+            str.append("&nbsp;&nbsp;&nbsp;&nbsp;"+file.getName()+"<br/>");
+        }
+        str.append("</html>");
+		return str.toString();
 	}
 }

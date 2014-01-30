@@ -9,14 +9,13 @@ public class CommandeVide1 extends CommandeFichier {
 		setTypeFichier(TypeFichier.DOSSIER);
 	}
 
-	public void executer() {
-		if (fichier != null) {
-			System.out.println("Comamnde Vide 1");
-			File[] files = getFichier().listFiles();
-			for (File file : files) {
-				System.out.println("\t" + file.getName());
-			}
+	public void executer() throws CommandeException {
+		if (this.isExecutable()) {
+			System.out.println("Commande Vide 1 lancé");
 		}
+        else {
+            throw new CommandeException("Impossible d'appliquer la commande sur "+fichier);
+        }
 	}
 
 }
