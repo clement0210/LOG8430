@@ -13,7 +13,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		CommandeManager cmdManager=new CommandeManager();
-		cmdManager.manage();
+        cmdManager.manage();
 	}
 
 }

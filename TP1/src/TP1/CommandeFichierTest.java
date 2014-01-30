@@ -19,6 +19,6 @@ public class CommandeFichierTest {
 	public void testExecuter() 
 	{
 		System.out.println( "\tCommandeFichier: testExecuter()" );
-		org.junit.Assert.assertTrue( "CommandeVide1: Le fichier est mal initialisé", commande.getFichier().toString() == PATH  );
+		org.junit.Assert.assertTrue( "CommandeVide1: Le fichier est mal initialisÃ©", commande.getFichier().toString() == PATH  );
 	}
 }

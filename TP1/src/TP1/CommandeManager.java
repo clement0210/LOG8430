@@ -2,23 +2,36 @@ package TP1;
 
 import java.io.File;
 
+/**
+ * Classe de controle du programme
+ */
 public class CommandeManager {
 	
 	private Invocateur invocateur;
 	private File fichier;
-	
+    private CommandeFrame commandeFrame;
+
+    /**
+     * Constructeur par défaut
+     */
 	public CommandeManager(){
 		invocateur = new Invocateur();
 		fichier = new File(".");
+        commandeFrame = new CommandeFrame(this);
+
 	}
-	
+
+    /**
+     * Méthode de manage de la vue
+     */
 	public void manage(){
-		
-		//CommandeVide1 cmd1=new CommandeVide1(invocateur,new File("/home/clement0210/Documents/LOG8430/LOG8430/resources"));
-		CommandeFrame commandeFrame = new CommandeFrame(this);
 		commandeFrame.display();
 	}
-	
+
+    /**
+     * Methode d'exécution de la commande 1
+     * @return le résultat de la commande 1
+     */
 	public String executerCommande1() {
 		CommandeVide1 commandeVide1 = new CommandeVide1(invocateur, fichier);
         try {
@@ -31,6 +44,10 @@ public class CommandeManager {
 
 	}
 
+    /**
+     * Methode d'exécution de la commande 2
+     * @return le résultat de la commande 2
+     */
 	public String executerCommande2(){
 		CommandeVide2 commandeVide2 = new CommandeVide2(invocateur, fichier);
         try {
@@ -42,7 +59,11 @@ public class CommandeManager {
         }
 
 	}
-	
+
+    /**
+     * Methode d'exécution de la commande 3
+     * @return le résultat de la commande 3
+     */
 	public String executerCommande3(){
 		CommandeVide3 commandeVide3 = new CommandeVide3(invocateur, fichier);
         try {
@@ -54,7 +75,11 @@ public class CommandeManager {
         }
 
 	}
-	
+
+    /**
+     * Methode d'exécution du selecteur de fichier
+     * @return le résultat du selecteur de fichier
+     */
 	public String executerSelect(){
 		CommandeSelecte commandeSelecte = new CommandeSelecte(invocateur);
 		commandeSelecte.executer();

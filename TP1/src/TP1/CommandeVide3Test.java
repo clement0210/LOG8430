@@ -20,6 +20,6 @@ public class CommandeVide3Test {
 	public void testExecuter() 
 	{
 		System.out.println( "\tCommandeVide3: testExecuter()" );
-		org.junit.Assert.assertTrue( "CommandeVide3: Le fichier est mal initialisé", commande.getFichier().toString() == PATH  );
+		org.junit.Assert.assertTrue( "CommandeVide3: Le fichier est mal initialisÃ©", commande.getFichier().toString() == PATH  );
 	}
 }
