@@ -1,6 +1,7 @@
 package TP1;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -80,5 +81,31 @@ public class CommandeManager {
 	}
 
     private void fillCommandeFichierMap(Map<Integer,CommandeFichier> map) {
+    	File directory = new File( "../commandes" );
+    	File[] matches = directory.listFiles( new FilenameFilter()
+    	{
+    	  public boolean accept( File dir, String name )
+    	  {
+    	     return name.endsWith(".class");
+    	  }
+    	});
+    	
+    	for( int i = 0; i < matches.length; i++ )
+    	{
+    		CommandeFichier commandeFichier = null;
+			try {
+				commandeFichier = (CommandeFichier) ( Class.forName( matches[i].getName() ) ).newInstance();
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    		map.put( i, commandeFichier );
+    	}
     }
 }
