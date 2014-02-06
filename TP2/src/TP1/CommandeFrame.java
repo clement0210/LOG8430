@@ -3,6 +3,8 @@ package TP1;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,38 +16,45 @@ public class CommandeFrame extends JFrame implements ActionListener{
 	CommandeManager commandeManager;
 	
 	
-	private JButton select,commande1,commande2,commande3;
-	private JLabel resultatCommande1,resultatCommande2,resultatCommande3, afficherContenu;
+	private JButton select;
+	private JLabel afficherContenu;
+    private List<CommandeView> commandeViewList;
+
 	
 	public CommandeFrame(CommandeManager commandeManager){
+        commandeViewList=new ArrayList<CommandeView>();
 		select=new JButton("Select a file or folder");
 		select.setActionCommand("select");
 		select.addActionListener(this);
-		commande1=new JButton("Commande 1");
+	    JButton commande1=new JButton("Commande 1");
 		commande1.setActionCommand("cmd1");
 		commande1.addActionListener(this);
-		commande2=new JButton("Commande 2");
+		JButton commande2=new JButton("Commande 2");
 		commande2.setActionCommand("cmd2");
 		commande2.addActionListener(this);
-		commande3=new JButton("Commande 3");
+		JButton commande3=new JButton("Commande 3");
 		commande3.setActionCommand("cmd3");
 		commande3.addActionListener(this);
-		resultatCommande1=new JLabel("Results of command 1");
-		resultatCommande2=new JLabel("Results of command 2");
-		resultatCommande3=new JLabel("Results of command 3");
+		JLabel resultatCommande1=new JLabel("Results of command 1");
+		JLabel resultatCommande2=new JLabel("Results of command 2");
+		JLabel resultatCommande3=new JLabel("Results of command 3");
+
+        commandeViewList.add(new CommandeView(commande1,resultatCommande1));
+        commandeViewList.add(new CommandeView(commande2,resultatCommande2));
+        commandeViewList.add(new CommandeView(commande3,resultatCommande3));
+
+
 		afficherContenu=new JLabel("List showing the content ...");
 		
 		GridLayout grid=new GridLayout(3,2);
 		JPanel gridPanel=new JPanel(grid);
-		gridPanel.add(commande1);
-		gridPanel.add(resultatCommande1);
-		gridPanel.add(commande2);
-		gridPanel.add(resultatCommande2);
-		gridPanel.add(commande3);
-		gridPanel.add(resultatCommande3);
+        for(CommandeView commandeView:commandeViewList){
+            gridPanel.add(commandeView.getCommandeButton());
+            gridPanel.add(commandeView.getResultatCommande());
+        }
 		
 		GridLayout grid2=new GridLayout(2,1);
-		JPanel gridPanel2=new JPanel(grid);
+		JPanel gridPanel2=new JPanel(grid2);
 		gridPanel2.add(afficherContenu);
 		gridPanel2.add(select);
 		
@@ -63,15 +72,15 @@ public class CommandeFrame extends JFrame implements ActionListener{
 		String action=e.getActionCommand();
 		if(action.equals("cmd1")){
 			String resultat=commandeManager.executerCommande1();
-			resultatCommande1.setText(resultat);
+			//resultatCommande1.setText(resultat);
 		}
 		else if(action.equals("cmd2")){
 			String resultat=commandeManager.executerCommande2();
-			resultatCommande2.setText(resultat);
+			//resultatCommande2.setText(resultat);
 		}
 		else if(action.equals("cmd3")){
 			String resultat=commandeManager.executerCommande3();
-			resultatCommande3.setText(resultat);
+			//resultatCommande3.setText(resultat);
 		}
 		else if(action.equals("select")){
 			String resultat=commandeManager.executerSelect();
