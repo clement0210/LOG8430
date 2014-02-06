@@ -4,7 +4,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,37 +20,29 @@ public class CommandeFrame extends JFrame implements ActionListener{
 	
 	private JButton select;
 	private JLabel afficherContenu;
-    private List<CommandeView> commandeViewList;
+    private Map<Integer,CommandeView> commandeViewMap;
 
 	
 	public CommandeFrame(CommandeManager commandeManager){
-        commandeViewList=new ArrayList<CommandeView>();
+        commandeViewMap=new HashMap<Integer, CommandeView>();
 		select=new JButton("Select a file or folder");
 		select.setActionCommand("select");
 		select.addActionListener(this);
-	    JButton commande1=new JButton("Commande 1");
-		commande1.setActionCommand("cmd1");
-		commande1.addActionListener(this);
-		JButton commande2=new JButton("Commande 2");
-		commande2.setActionCommand("cmd2");
-		commande2.addActionListener(this);
-		JButton commande3=new JButton("Commande 3");
-		commande3.setActionCommand("cmd3");
-		commande3.addActionListener(this);
-		JLabel resultatCommande1=new JLabel("Results of command 1");
-		JLabel resultatCommande2=new JLabel("Results of command 2");
-		JLabel resultatCommande3=new JLabel("Results of command 3");
+        for(int key:commandeManager.getCommandeFichierMap().keySet()){
+            JButton button=new JButton("Commande n°" + key + 1);
+            button.setActionCommand(Integer.toString(key));
+            commandeViewMap.put(key, new CommandeView(button, new JLabel("Resultat commande n°" + key + 1)));
+        }
 
-        commandeViewList.add(new CommandeView(commande1,resultatCommande1));
-        commandeViewList.add(new CommandeView(commande2,resultatCommande2));
-        commandeViewList.add(new CommandeView(commande3,resultatCommande3));
+
 
 
 		afficherContenu=new JLabel("List showing the content ...");
 		
 		GridLayout grid=new GridLayout(3,2);
 		JPanel gridPanel=new JPanel(grid);
-        for(CommandeView commandeView:commandeViewList){
+        for(int key:commandeViewMap.keySet()){
+            CommandeView commandeView=commandeViewMap.get(key);
             gridPanel.add(commandeView.getCommandeButton());
             gridPanel.add(commandeView.getResultatCommande());
         }
@@ -68,24 +62,25 @@ public class CommandeFrame extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("avant select");
 		String action=e.getActionCommand();
-		if(action.equals("cmd1")){
-			String resultat=commandeManager.executerCommande1();
-			//resultatCommande1.setText(resultat);
-		}
-		else if(action.equals("cmd2")){
-			String resultat=commandeManager.executerCommande2();
-			//resultatCommande2.setText(resultat);
-		}
-		else if(action.equals("cmd3")){
-			String resultat=commandeManager.executerCommande3();
-			//resultatCommande3.setText(resultat);
-		}
-		else if(action.equals("select")){
-			String resultat=commandeManager.executerSelect();
-			afficherContenu.setText(resultat);
-		}
+        if(action.equals("select")){
+            String resultat=commandeManager.executerSelect();
+            afficherContenu.setText(resultat);
+        }
+        else{
+            try{
+                int id=Integer.parseInt(action);
+                String resultat=commandeManager.executerCommande(id);
+                commandeViewMap.get(id).getResultatCommande().setText(resultat);
+            }
+            catch (NumberFormatException e1){
+                e1.printStackTrace();
+            }
+        }
+
+
+
+
 	}
 	
 	public CommandeManager getCommandeManager() {

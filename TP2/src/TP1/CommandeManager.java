@@ -1,6 +1,10 @@
 package TP1;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Classe de controle du programme
@@ -10,16 +14,26 @@ public class CommandeManager {
 	private Invocateur invocateur;
 	private File fichier;
     private CommandeFrame commandeFrame;
-
+    private Map<Integer,CommandeFichier> commandeFichierMap;
     /**
      * Constructeur par défaut
      */
 	public CommandeManager(){
 		invocateur = new Invocateur();
 		fichier = new File(".");
+        commandeFichierMap=new HashMap<Integer, CommandeFichier>();
+        fillCommandeFichierMap(commandeFichierMap);
         commandeFrame = new CommandeFrame(this);
 
 	}
+
+    public Map<Integer, CommandeFichier> getCommandeFichierMap() {
+        return commandeFichierMap;
+    }
+
+    public void setCommandeFichierMap(Map<Integer, CommandeFichier> commandeFichierMap) {
+        this.commandeFichierMap = commandeFichierMap;
+    }
 
     /**
      * Méthode de manage de la vue
@@ -29,52 +43,24 @@ public class CommandeManager {
 	}
 
     /**
-     * Methode d'exécution de la commande 1
-     * @return le résultat de la commande 1
+     * Methode d'exécution de la commande
+     * @return le résultat de la commande
      */
-	public String executerCommande1() {
-		CommandeVide1 commandeVide1 = new CommandeVide1(invocateur, fichier);
+    public String executerCommande(int id) {
+        CommandeFichier cmdFichier=commandeFichierMap.get(id);
+        cmdFichier.setInvocateur(invocateur);
+        cmdFichier.setFichier(fichier);
+
         try {
-            commandeVide1.executer();
-            return "Commande 1 sur " + fichier.getName();
+            cmdFichier.executer();
+            return "Commande sur " + fichier.getName();
         } catch (CommandeException e) {
             e.printStackTrace();
             return "Impossible d'appliquer la commande (voir le log)";
         }
 
-	}
+    }
 
-    /**
-     * Methode d'exécution de la commande 2
-     * @return le résultat de la commande 2
-     */
-	public String executerCommande2(){
-		CommandeVide2 commandeVide2 = new CommandeVide2(invocateur, fichier);
-        try {
-            commandeVide2.executer();
-            return "Commande 2 sur " + fichier.getName();
-        } catch (CommandeException e) {
-            e.printStackTrace();
-            return "Impossible d'appliquer la commande (voir le log)";
-        }
-
-	}
-
-    /**
-     * Methode d'exécution de la commande 3
-     * @return le résultat de la commande 3
-     */
-	public String executerCommande3(){
-		CommandeVide3 commandeVide3 = new CommandeVide3(invocateur, fichier);
-        try {
-            commandeVide3.executer();
-            return "Commande 3 sur " + fichier.getName();
-        } catch (CommandeException e) {
-            e.printStackTrace();
-            return "Impossible d'appliquer la commande (voir le log)";
-        }
-
-	}
 
     /**
      * Methode d'exécution du selecteur de fichier
@@ -92,4 +78,7 @@ public class CommandeManager {
         str.append("</html>");
 		return str.toString();
 	}
+
+    private void fillCommandeFichierMap(Map<Integer,CommandeFichier> map) {
+    }
 }
