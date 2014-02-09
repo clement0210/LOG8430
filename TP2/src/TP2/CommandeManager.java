@@ -6,11 +6,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Classe de controle du programme
  */
-public class CommandeManager {
+public class CommandeManager implements Observer{
 
 	private static final String COMMANDES = "commandes";
 	private Invocateur invocateur;
@@ -105,7 +107,7 @@ public class CommandeManager {
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void fillCommandeFichier(Map<Integer, CommandeDynamic> commandeFichier) {
-
+        commandeFichier.clear();
 		File directory = new File(COMMANDES);
 		File[] files = getFichiersCommandes(directory);
 
@@ -141,4 +143,17 @@ public class CommandeManager {
 			}
 		});
 	}
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if(o instanceof CommandeFrame){
+            System.out.println("Udpdating command");
+            CommandeFrame cmdFrame= (CommandeFrame) o;
+            fillCommandeFichier(commandeFichierMap);
+            cmdFrame.setCommandeManager(this);
+            cmdFrame.pack();
+            cmdFrame.repaint();
+
+        }
+    }
 }
