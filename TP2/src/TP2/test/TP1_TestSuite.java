@@ -1,4 +1,4 @@
-package TP1;
+package TP2.test;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

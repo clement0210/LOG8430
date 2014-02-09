@@ -1,4 +1,4 @@
-package TP1;
+package TP2;
 
 /**
  * Interface d'une commande

@@ -1,20 +1,21 @@
-package TP1;
+package TP2;
 
 import java.io.File;
 
 /**
- * Classe representant la commande vide 2 sur un fichier
+ * Classe representant la commande vide 3 sur un fichier
  */
-public class CommandeVide2 extends CommandeFichier {
+public class CommandeVide3 extends CommandeFichier {
+
 
     /**
-     * Constrcuteur de CommandeVide2
+     * Constrcuteur de CommandeVide3
      * @param invocateur un invocateur
      * @param fichier un fichier
      */
-	public CommandeVide2(Invocateur invocateur,File fichier) {
+	public CommandeVide3(Invocateur invocateur,File fichier) {
 		super(invocateur,fichier);
-        setTypeFichier(TypeFichier.FICHIER);
+        setTypeFichier(TypeFichier.FICHIERETDOSSIER);
 	}
 
     /**
@@ -23,7 +24,7 @@ public class CommandeVide2 extends CommandeFichier {
      */
 	public void executer() throws CommandeException {
         if (this.isExecutable()) {
-            System.out.println("Commande Vide 2 lancé");
+            System.out.println("Commande Vide 3 lancé");
 
         }
         else {

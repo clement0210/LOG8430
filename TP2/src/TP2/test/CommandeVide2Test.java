@@ -1,7 +1,10 @@
-package TP1;
+package TP2.test;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import TP2.CommandeVide2;
+import TP2.Invocateur;
 
 import java.io.File;
 

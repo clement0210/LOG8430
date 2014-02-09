@@ -1,8 +1,8 @@
-package TP1;
+package TP2;
 
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
+
+import javax.swing.JFileChooser;
 
 /**
  * Classe d'entrée utilisateur
