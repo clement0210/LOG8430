@@ -1,0 +1,69 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/jsp-api-2.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/explorer-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/apollon-runtime-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/jta-1.1.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/fractal-spoonlet-3.0.3.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/commons-lang-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/bsf-2.4.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/fractaladl-spoonlet-3.0.3.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/bsh-2.0b4.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/fraclet-annotations-3.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/jdom-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/google-collect-snapshot-20080530.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/jline-0.9.9.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/xml-spoonlet-3.0.3.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/fractal-adl-2.2.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/xstream-1.2.2.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/fractal-api-2.0.2.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/fractal-libraries-1.1.2-SNAPSHOT.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/dumper-0.1.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/monolog-api-1.8.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/fscript-console-2.1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/castor-0.9.9.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/ast-core-2.2.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/ow-trace-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/task-framework-2.2.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/core-3.2.0.666.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/aval-0.7.1.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/fractal-rmi-0.3.5.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/fscript-2.1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/explorer-reflector-plugin-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/openejb-loader-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/xpp3_min-1.1.3.4.O.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/mx4j-3.0.2.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/jcip-annotations-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/groovy-all-1.1-beta-2.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/ow-misc-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/mockobjects-core-0.09.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/servlet-api-2.4.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/commandline-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/task-deployment-2.2.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/xercesImpl-2.4.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/julia-mixins-2.5.1.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/asm-3.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/dtdparser-1.21.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/fractal-util-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/antlr-runtime-3.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/commons-logging-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/ant-launcher-1.7.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/jgraph-fractal.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/julia-asm-2.5.1.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/spoon-core-1.3.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/ant-junit-1.7.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/jonathan-3.0.10.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/monolog-1.8.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/google-collect-0.5-20080322.110711-2.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/jsap-2.1.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/log4j-1.2.8.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/ant-1.7.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/fractal-explorer-1.1.3-20071206.083344-2.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/commons-cli-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Téléchargements/Comanche/lib/julia-runtime-2.5.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

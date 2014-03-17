@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!-- 
+	* This library is free software; you can redistribute it and/or
+	* modify it under the terms of the GNU Lesser General Public
+	* License as published by the Free Software Foundation; either
+	* version 2 of the License, or (at your option) any later version.
+	*
+	* This library is distributed in the hope that it will be useful,
+	* but WITHOUT ANY WARRANTY; without even the implied warranty of
+	* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+	* Lesser General Public License for more details.
+	*
+	* You should have received a copy of the GNU Lesser General Public
+	* License along with this library; if not, write to the Free Software
+	* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+-->
+
+<project name="comanche-adl" default="dist" basedir=".">
+	<description>
+        Comanche and Fractal ADL
+    </description>
+	
+	<!-- set global properties for this build -->
+	<property environment="env"/>
+	
+	<property name="src" location="src" />
+	<property name="adl" location="src/adl" />
+	<property name="build" location="build" />
+	<property name="dist" location="dist" />
+
+	<condition property="lib" value="${env.FRACTAL_HOME}/lib">
+		<and>
+			<not>
+				<available file="../lib/" />
+			</not>
+		</and>
+	</condition>
+
+	<condition property="lib" value="../lib">
+		<and>
+			<available file="../lib/" />
+		</and>
+	</condition>
+
+	<property name="resources" location="resources" />
+
+	<path id="base.path">
+		<fileset dir="${lib}">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement location="build" />
+	</path>
+
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="compile" depends="init" description="compile the source ">
+		<!-- Compile the java code from ${src} into ${build} -->
+		<javac srcdir="${src}" destdir="${build}" classpathref="base.path" />
+
+		<!-- The ADLs files must be in the classpath.
+		   Copy adl files in the build directory -->
+		<copy todir="${build}">
+			<fileset dir="${src}">
+				<include name="**/*.fractal"/>
+			</fileset>
+		</copy>
+
+	</target>
+
+	<target name="dist" depends="compile" description="generate the distribution">
+		<!-- Create the distribution directory -->
+		<mkdir dir="${dist}" />
+		<!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+		<jar jarfile="${dist}/comanche-adl-${DSTAMP}.jar" basedir="${build}" />
+	</target>
+
+	<target name="run" depends="compile">
+			<java classname="org.objectweb.fractal.adl.Launcher" fork="true" classpathref="base.path">
+				<jvmarg value="-Dfractal.provider=org.objectweb.fractal.julia.Julia" />
+				<arg value="comanche.Comanche"/>
+				<arg value="r"/>
+			</java>
+		</target>
+
+	<target name="clean" description="clean up">
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+	</target>
+</project>
+
