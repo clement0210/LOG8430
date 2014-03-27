@@ -9,6 +9,9 @@ import CH.ifa.draw.framework.Connector;
  * on 27-03-2014
  */
 
+/**
+ *  Aspect pour profiler la creation de ConnectionFigure et de Point dans le contexte de ConnectionFigure
+ */
 public aspect AspectProfiler 
 {
 	// R1 - R2 --------------------------------------------------
@@ -25,6 +28,6 @@ public aspect AspectProfiler
 		within( CH.ifa.draw.framework.ConnectionFigure+ );
 	
 	after(): initPoint(){
-		System.out.println("Initialisation d'un point dans " + thisJoinPoint.getThis().getClass().getName() );
+		System.out.println("Initialisation d'un point dans " + thisEnclosingJoinPointStaticPart.getSourceLocation().toString() );
 	}
 }
