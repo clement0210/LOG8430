@@ -25,7 +25,7 @@ import java.io.Serializable;
  */
 
 public interface Figure
-                extends Storable, Cloneable, Serializable {
+                extends Storable, Cloneable, Serializable, Subject {
 
     /**
      * Moves the Figure to a new location.
@@ -127,35 +127,6 @@ public interface Figure
      * as a part of itself.
      */
     public FigureEnumeration decompose();
-
-    /**
-     * Sets the Figure's container and registers the container
-     * as a figure change listener. A figure's container can be
-     * any kind of FigureChangeListener. A figure is not restricted
-     * to have a single container.
-     */
-    public void addToContainer(FigureChangeListener c);
-
-    /**
-     * Removes a figure from the given container and unregisters
-     * it as a change listener.
-     */
-    public void removeFromContainer(FigureChangeListener c);
-
-    /**
-     * Gets the Figure's listeners.
-     */
-    public FigureChangeListener listener();
-
-    /**
-     * Adds a listener for this figure.
-     */
-    public void addFigureChangeListener(FigureChangeListener l);
-
-    /**
-     * Removes a listener for this figure.
-     */
-    public void removeFigureChangeListener(FigureChangeListener l);
 
     /**
      * Releases a figure's resources. Release is called when
