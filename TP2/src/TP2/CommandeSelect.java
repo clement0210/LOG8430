@@ -8,13 +8,13 @@ import java.util.List;
 /**
  * Classe representant la commande de selecteur de fichier
  */
-public class CommandeSelecte extends CommandeFichier {
+public class CommandeSelect extends CommandeFichier {
 
     /**
      * Constrcuteur de CommandeSelecte
      * @param invocateur un invocateur
      */
-	public CommandeSelecte(Invocateur invocateur) {
+	public CommandeSelect(Invocateur invocateur) {
 		super(invocateur,null);
 	}
 

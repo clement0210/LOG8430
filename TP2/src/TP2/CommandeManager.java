@@ -32,10 +32,18 @@ public class CommandeManager implements Observer{
 
 	}
 
+    /**
+     *
+     * @return la map de commandes
+     */
 	public Map<Integer, CommandeDynamic> getCommandeFichierMap() {
 		return commandeFichierMap;
 	}
 
+    /**
+     *
+     * @param commandeFichierMap une map de commandes
+     */
 	public void setCommandeFichierMap(
 			Map<Integer, CommandeDynamic> commandeFichierMap) {
 		this.commandeFichierMap = commandeFichierMap;
@@ -88,7 +96,7 @@ public class CommandeManager implements Observer{
 	 * @return le résultat du selecteur de fichier
 	 */
 	public String executerSelect() {
-		CommandeSelecte commandeSelecte = new CommandeSelecte(invocateur);
+		CommandeSelect commandeSelecte = new CommandeSelect(invocateur);
 		commandeSelecte.executer();
 		fichier = commandeSelecte.getFichier();
 		StringBuilder str = new StringBuilder();
@@ -100,12 +108,20 @@ public class CommandeManager implements Observer{
 		return str.toString();
 	}
 
+    /**
+     *
+     * @param nom un nom de fichier
+     * @return le nom du fichier parsé
+     */
 	private String parseNomFichier(String nom) {
 		String[] nomFichier = nom.split("\\.");
 		return nomFichier[0];
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
+    /**
+     * Methode permettant de remplir la map passée en paramètre. Le remplissage s'effectue grâce aux commandes qui doivent être chargé dynamiquement
+     * @param commandeFichier un map d'identifiant et de commande dynamique
+     */
 	private void fillCommandeFichier(Map<Integer, CommandeDynamic> commandeFichier) {
         commandeFichier.clear();
 		File directory = new File(COMMANDES);
@@ -136,6 +152,11 @@ public class CommandeManager implements Observer{
 
 	}
 
+    /**
+     * Methode permettant de lister les fichiers à chargés dynamiquement
+     * @param directory un dossier
+     * @return la liste de fichiers
+     */
 	private File[] getFichiersCommandes(File directory) {
 		return directory.listFiles(new FilenameFilter() {
 			public boolean accept(File dir, String name) {
@@ -151,7 +172,7 @@ public class CommandeManager implements Observer{
             CommandeFrame cmdFrame= (CommandeFrame) o;
             fillCommandeFichier(commandeFichierMap);
             cmdFrame.setCommandeManager(this);
-            cmdFrame.pack();
+            cmdFrame.repackCommandViewGrid();
             cmdFrame.repaint();
 
         }
